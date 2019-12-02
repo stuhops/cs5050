@@ -184,6 +184,7 @@ For simplicity, you only need to return the length of the path and do not need t
 
 To perform this problem we will need to first do a topological sort.
 We will use the algorithm from class to do this topological sort.
+We will then cut off all values that appear before `s` because that means `s` cannot reach them.
 From there we will initialize the array as all infinities.
 Each row of the table will be a k value.
 Each column of the table will be vertex (sorted in topological order).
@@ -195,6 +196,7 @@ Finally, once the array is completely filled out we will take the minimum value 
 
 def kShortest(G, s, t, k):
   topo = topologicalSort(G)
+  # Cut off everything that appears before 's' in the sort
   array = [k][topo]
 
   # Initialize the first row (zero indexed) -- O(n + m)
@@ -219,7 +221,7 @@ def kShortest(G, s, t, k):
 
 ```
 
-This algorithm is correct because we check all possible paths to `t` (up to `k` away).
+This algorithm is correct because we check all possible paths to `t` from `s` (up to `k` away).
 We compare the paths and only keep the shortest ones at that length.
 We rely on the `min()` function prioritizing any number over `Null`.
 The time analysis is `k * O(m + n)` because we do `O(m + n)` work for each `k`.
