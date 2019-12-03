@@ -46,12 +46,12 @@ Let s and t be two vertices of G. Let π(s, t) denote a shortest path from s to 
 Let T be a minimum spanning tree of G.
 Please answer the following questions and briefly explain why you obtain your answers.
 
-### Part a
-#### Definition
+## Part a
+### Definition
 Suppose we increase the weight of every edge of G by a positive value δ > 0.
 Is the path π(s, t) still a shortest path from s to t?
 
-#### Solution
+### Solution
 Not necessarily, the path π(s, t) will not necessarily be a shortest path from s to t.
 For example, if one path takes 3 edges and has a weight of 5
   and another path takes 3 edges with a weight of 6,
@@ -79,12 +79,12 @@ If the number of edges are different in both paths then
 
 
 
-### Part b
-#### Definition
+## Part b
+### Definition
 Suppose we increase the weight of every edge of G by a positive value δ > 0.
 Is the tree T still a minimum spanning tree of G? 
 
-#### Solution
+### Solution
 Yes, the tree T will still be a minimum spanning tree of G.
 This is because Prim's algorithm uses a min-heap.
 If all values in a heap are increased by the same constant, the relations between the values will not change.
@@ -96,14 +96,14 @@ This eliminates the case that causes <i><b>a</b></i> to fail.
 
 
 
-### Part c
-#### Definition
+## Part c
+### Definition
 Let e be an edge of T.
 Suppose we increase the weight of e by a positive value δ > 0
   (the weights of other edges of G do not change).
 Is the tree T still a minimum spanning tree of G? 
 
-#### Solution
+### Solution
 Not necessarily.
 Because Prim's algorithm uses a min-heap to determine a minimum spanning tree,
   adding to the weight of <i>e</i> may make it move places in the min-heap.
@@ -114,14 +114,14 @@ This means that the tree T will not necessarily still be a minimum spanning tree
 
 
 
-### Part d TODO
-#### Definition
+## Part d
+### Definition
 Let e be an edge of G, but e is not an edge of T.
 Suppose we increase the weight of e by a positive value δ > 0
   (the weights of other edges of G do not change).
 Is the tree T still a minimum spanning tree of G? 
 
-#### Solution
+### Solution
 Yes, prim's algorithm
 
 Yes, the tree T will still be a minimum spanning tree of G.
@@ -142,4 +142,15 @@ Design an algorithm to find a spanning tree T of G such that T has as few red ed
 Your algorithm should run in O((n + m) log n) time.
 
 ### Solution
+To solve this problem we will use Prim's algorithm.
+There are not currently weights on the edges so we will use the blue and red properties as weights.
+To begin we will loop through all edges and assign each a weight with respect to its color.
+If the edge is blue we will give it a weight of 1 and if it is red a weight of 2.
+This way, Prim's algorithm will try all blue edges before it tries the red edges.
 
+This algorithm will be correct because Prim's algorithm has been proven to be correct.
+We are using Prim's algorithm to do all the computation and only forcing it to use the blue edges before the red edges.
+
+The time complexity will stay the same as Prim's time complexity.
+This is because adding a weight to all edges will take `O(m)` time.
+Prim's time complexity is `O((n + m) log n)` so `O((n + m) log n) + O(m) = O((n + m) log n)`.
