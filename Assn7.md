@@ -79,16 +79,24 @@ If the number of edges are different in both paths then
 
 
 
-### Part b TODO
+### Part b
 #### Definition
 Suppose we increase the weight of every edge of G by a positive value δ > 0.
 Is the tree T still a minimum spanning tree of G? 
 
 #### Solution
-Yes
+Yes, the tree T will still be a minimum spanning tree of G.
+This is because Prim's algorithm uses a min-heap.
+If all values in a heap are increased by the same constant, the relations between the values will not change.
+This can be seen where `(a + δ) > (b + δ) -----> a > b`.
+
+This is different than <i><b>a</b></i> because the minimum spanning tree will always have `n = m` edges.
+Therefore we are comparing paths with exactly the same amount of edges.
+This eliminates the case that causes <i><b>a</b></i> to fail.
 
 
-### Part c TODO
+
+### Part c
 #### Definition
 Let e be an edge of T.
 Suppose we increase the weight of e by a positive value δ > 0
@@ -96,7 +104,14 @@ Suppose we increase the weight of e by a positive value δ > 0
 Is the tree T still a minimum spanning tree of G? 
 
 #### Solution
-Not necessarily
+Not necessarily.
+Because Prim's algorithm uses a min-heap to determine a minimum spanning tree,
+  adding to the weight of <i>e</i> may make it move places in the min-heap.
+It is possible that the weight of <i>e</i> does not change enough to move in the min-heap but it is possible.
+Because of this movement, it is possible <i>e</i> moves so far in the min-heap
+  that it is no longer used in the minimum spanning tree.
+This means that the tree T will not necessarily still be a minimum spanning tree of G.
+
 
 
 ### Part d TODO
@@ -107,7 +122,15 @@ Suppose we increase the weight of e by a positive value δ > 0
 Is the tree T still a minimum spanning tree of G? 
 
 #### Solution
-No
+Yes, prim's algorithm
+
+Yes, the tree T will still be a minimum spanning tree of G.
+This is because <i>e</i> is already great enough to not be used.
+Prim's algorithm uses a min-heap.
+<i>e</i> is already far enough along in the queue to not be used so adding δ to it will only take it further away from being used.
+Because <i>e</i> will not be used either way it does not change the end result of Prim's algorithm.
+Therefore, the tree T will still be a minimum spanning tree of G.
+
 
 
 
